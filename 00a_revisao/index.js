@@ -38,16 +38,21 @@ const botao = document.getElementById('trocaCor');
 console.log(botao);
 
 
-//ouvir o click e mudar a cor com rgb
+//ouvir o click e mudar a cor com rgb, esta gerando um numero randomico, vai guardar na var n, e na função clicoubotao vai guardar em cada var.
 botao.addEventListener('click',clicoubotao);
-function clicoubotao() {
-    const r =parseInt(Math.random()* 255);
-    const g = parseInt(Math.random()* 255);
-    const b = parseInt(Math.random()* 255);
-
-    body.style.backgroundColor = 'rgb('+r+', '+g+', '+b+')'
-    console.log(r,g,b);
-    
-    
-       
+function geraInteiro() {
+    const n = parseInt(Math.random()*255);
+    // console.log(n);
+    return n;        
 }
+
+
+function clicoubotao() {    
+    const r = geraInteiro()
+    const g = geraInteiro()
+    const b = geraInteiro()
+    body.style.backgroundColor = 'rgb('+r+', '+g+', '+b+')'
+    console.log(r,g,b);  
+}
+
+
