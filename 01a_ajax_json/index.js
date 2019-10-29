@@ -2,22 +2,29 @@
 // [] o que fazer depois que receber a resposta
 // [] fazer a requisição com open() e send()
 // [] tratar response
+
 const div = document.querySelector('#root');
 const img = document.createElement('img');
+
 const request = new XMLHttpRequest();
 
+request.onreadystatechange = getDados;
 
-request.onreadystatechange = algumafuncao;
-
-function algumafuncao() {
-    console.log('olar');
-
+function getDados() {
+  if (request.readyState === 4 && request.status === 200) {
     const response = request.response;
-    const blob = response.blob();
-    
-    
-    
+    const json = JSON.parse(response);
+    const data = json.data;
+    const obj = data[0]
+
+    const imgSrc = obj.imagem
+    img.src = imgSrc;
+    div.appendChild(img);
+  } else {
+    console.log(request.readyState, request.status);
+  }
 }
-const url = './img/cintiafumi.jpeg'
-request.open('GET',url);
+
+const url = './data/dados.json'
+request.open('GET', url);
 request.send();

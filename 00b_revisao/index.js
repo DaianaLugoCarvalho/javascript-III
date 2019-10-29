@@ -8,25 +8,20 @@
 
 // ------------------------------------------------------------------------
 // 2. melhorando o código
-// [] remover repetição de código
-// [] anonymous function
-// [] arrow function
-// [] template string
+// [x] remover repetição de código
+// [x] anonymous function
+// [x] arrow function
+// [x] template string
 
 const body = document.body;
-// console.log(body);
-
 const botao = document.getElementById('trocaCor');
-// console.log(botao);
 
-botao.addEventListener('click', () =>{
-    const r = geraInteiro();
-    const g = geraInteiro();
-    const b = geraInteiro();
-    body.style.backgroundColor = 'rgb('+r+', '+g+', '+b+')'
-    // console.log(r,g,b); 
+body.style.backgroundColor = 'purple';
+botao.addEventListener('click', () => {
+  const r = geraInteiro(255);
+  const g = geraInteiro(255);
+  const b = geraInteiro(255);
+  body.style.backgroundColor = `rgb(${r}, ${g}, ${b})`;
 });
 
- geraInteiro = () => {
-     return  parseInt(Math.random()*255);          
-}
+geraInteiro = num => parseInt(Math.random() * num);
